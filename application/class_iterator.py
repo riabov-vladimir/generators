@@ -1,6 +1,6 @@
 import json
 from pprint import pprint
-
+import wikipediaapi
 
 # def print_json_file(input_file='C:/Users/79055/PycharmProjects/generators/data/countries.json'):
 # 	"""Функция для десериализации json файлов"""
@@ -9,13 +9,16 @@ from pprint import pprint
 if __name__ == '__main__':
 
 	input_file = 'C:/Users/79055/PycharmProjects/generators/data/countries.json'
+	wiki_wiki = wikipediaapi.Wikipedia('en')
 
 	with open(input_file, encoding='utf-8') as file:
 
 		reader = json.load(file)
 
 		for country in reader:
-			print(country['name']['official'])
+			country_name = country['name']['official']
+			country_name_underscored = country_name.replace(' ', '_')
+			country = wiki_wiki.page(country_name_underscored)
+			print(country.fullurl)
 
-	# pprint(reader)
 
