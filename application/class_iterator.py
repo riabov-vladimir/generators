@@ -16,11 +16,10 @@ if __name__ == '__main__':
 		reader = json.load(file)
 
 		for country in reader:
-			country_name = country['name']['official']
+			country_name = country['name']['common']
 			country_name_underscored = country_name.replace(' ', '_')
 			country = wiki_wiki.page(country_name_underscored)
 			try:
-				print(country.fullurl)
+				print(f'{country_name} -- {country.fullurl}')
 			except KeyError:
-				print(country_name + ' -- bad link')
-
+				print(f'Bad request for "{country_name}" (got KeyError)')
