@@ -1,6 +1,4 @@
 import json
-from pprint import pprint
-import wikipediaapi
 
 
 def json_to_file(script_result, input_file='C:/Users/79055/PycharmProjects/generators/data/country_links.txt'):
@@ -15,6 +13,7 @@ def json_file_print(input_file = 'C:/Users/79055/PycharmProjects/generators/data
 	with open(input_file, encoding='utf-8') as file:
 		reader = json.load(file)
 	return reader
+
 
 def get_country_names(reader):
 	"""Фильтуем json-данные стран, получаем список названий стран"""
